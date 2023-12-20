@@ -4,16 +4,16 @@ function outliersTukeyFence(dataArray, label, measure, multiplier = 1.5) {
   
   // Input validation checks
   if (!Array.isArray(dataArray) || dataArray.length === 0 || typeof dataArray[0] !== 'object') {
-    throw new Error('The first parameter requires an array of objects.');
+    throw new Error('The first parameter (dataArray) requires an array of objects.');
   }
   if (typeof label !== 'string') {
-    throw new Error('The second parameter requires a string.');
+    throw new Error('The second parameter (label) requires a string.');
   }
   if (typeof measure !== 'string') {
-    throw new Error('The third parameter requires a string.');
+    throw new Error('The third parameter (measure) requires a string.');
   }
-  if (typeof multiplier !== 'number' || isNaN(multiplier)) {
-    throw new Error('The fourth parameter requires a number.');
+  if (typeof multiplier !== 'number') {
+    throw new Error('The fourth parameter (multiplier) requires a number.');
   }
 
   // Extract the array of values for the specified measure

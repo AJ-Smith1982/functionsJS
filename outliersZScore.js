@@ -4,19 +4,19 @@ function outliersZScore(dataArray, label, measure, zThreshold = 2, isSample = fa
   
   // Input validation checks
   if (!Array.isArray(dataArray) || dataArray.length === 0 || typeof dataArray[0] !== 'object') {
-    throw new Error('The first parameter requires an array of objects.');
+    throw new Error('The first parameter (dataArray) requires an array of objects.');
   }
   if (typeof label !== 'string') {
-    throw new Error('The second parameter requires a string.');
+    throw new Error('The second parameter (label) requires a string.');
   }
   if (typeof measure !== 'string') {
-    throw new Error('The third parameter requires a string.');
+    throw new Error('The third parameter (measure) requires a string.');
   }
-  if (typeof zThreshold !== 'number' || isNaN(zThreshold)) {
-    throw new Error('The fourth parameter requires a number.');
+  if (typeof zThreshold !== 'number') {
+    throw new Error('The fourth parameter (zThreshold) requires a number.');
   }
   if (typeof isSample !== 'boolean') {
-    throw new Error('The fifth parameter requires a boolean.');
+    throw new Error('The fifth parameter (isSample) requires a boolean.');
   } 
 
   // Create an array of values for the specified measure

@@ -1,23 +1,23 @@
 const jStat = require('jstat');
 
 function outliersGrubbsTest(dataArray, label, measure, alpha = 0.05, testType = 'two-sided') {
-
+  
   // Input validation checks
-  if (!Array.isArray(dataArray) || dataArray.length < 7) {
-    throw new Error('dataArray must be an array containing seven or more values.');
+  if (!Array.isArray(dataArray) || dataArray.length === 0 || typeof dataArray[0] !== 'object') {
+    throw new Error('The first parameter (dataArray) requires an array of objects.');
   }
   if (typeof label !== 'string') {
-    throw new Error('label must be a string.');
+    throw new Error('The second parameter (label) requires a string.');
   }
   if (typeof measure !== 'string') {
-    throw new Error('measure must be a string.'); 
+    throw new Error('The third parameter (measure) requires a string.'); 
   }
-  if (typeof alpha !== 'number' || alpha < 0 || alpha > 1) {
-    throw new Error('alpha must be a number between 0 and 1.');
+  if (typeof alpha !== 'number' || alpha <= 0 || alpha >= 1) {
+    throw new Error('The fourth parameter (alpha) requires a number between 0 and 1.');
   }
   const validTestTypes = ['two-sided', 'left-sided', 'right-sided'];
   if (!validTestTypes.includes(testType)) {
-    throw new Error('Invalid testType. Valid inputs are: "two-sided", "left-sided", "right-sided".'); 
+    throw new Error("The fifth parameter requires 'two-sided', 'left-sided', or 'right-sided.'"); 
   }
 
   // Get sample mean and standard deviation
@@ -129,7 +129,7 @@ const testData = [
   { month: "Dec", orders: 9, sales: 9200 }  
 ];
 
-const result1 = outliersGrubbsTest(testData, 'month', 'orders', 0.05, 'two-sided');
+const result1 = outliersGrubbsTest(testData, 'month', 'orders', 0.05, 'tit-sided');
 const result2 = outliersGrubbsTest(testData, 'month', 'orders', 0.05, 'left-sided');
 const result3 = outliersGrubbsTest(testData, 'month', 'orders', 0.05, 'right-sided');
 
