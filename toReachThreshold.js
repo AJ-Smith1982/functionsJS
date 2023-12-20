@@ -15,7 +15,7 @@ function toReachThreshold(dataArray, targetThreshold) {
     let currentSum = 0;
     let i = 0;
 
-    // When targetThreshold is a positive
+    // When targetThreshold is positive
     if (targetThreshold >= 0) {
       do {
         currentSum += dataArray[i];
